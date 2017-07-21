@@ -1,0 +1,338 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Text user’s interface &mdash; DW user  documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="DW user  documentation" href="index.html" />
+    <link rel="up" title="Band Pass Correction" href="bpc.html" />
+    <link rel="next" title="Graphical user’s interface" href="guibp.html" />
+    <link rel="prev" title="Band Pass Correction" href="bpc.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="guibp.html" title="Graphical user’s interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="bpc.html" title="Band Pass Correction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="bpc.html" accesskey="U">Band Pass Correction</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="text-user-s-interface">
+<h1>Text user&#8217;s interface<a class="headerlink" href="#text-user-s-interface" title="Permalink to this headline">¶</a></h1>
+<p>The text user&#8217;s interface can be used with any interactive python interpreter.</p>
+<div class="section" id="peliminary-steps">
+<h2>Peliminary steps<a class="headerlink" href="#peliminary-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importing-the-module">
+<h3>Importing the module<a class="headerlink" href="#importing-the-module" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dw.core.data_def</span> <span class="kn">as</span> <span class="nn">dw</span>
+</pre></div>
+</div>
+<p>This is the same module of DW, and it will import also the text mode capabilities of BPC.</p>
+</div>
+<div class="section" id="instantiating-a-bpc-class">
+<h3>Instantiating a BPC class<a class="headerlink" href="#instantiating-a-bpc-class" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bpc</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">DWObs</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will instantiate a BCP data object.</p>
+<p>DWObs is a class with the following attributes:</p>
+<p><em>dir_name</em> is the directory name</p>
+<p><em>files_type</em> is the extension of the files in the direcory</p>
+<p><em>dir_datasets</em> is a list of DW object DWData()</p>
+<p><em>feeds</em> is a list of feeds</p>
+<p><em>sections</em> is a list of sections</p>
+<p><em>polars</em> is a list of polarizations</p>
+<p><em>dssel</em> is the current selection of feed, section and polarization</p>
+</div>
+</div>
+<div class="section" id="opening-data">
+<h2>Opening data<a class="headerlink" href="#opening-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="opening-an-observation-directory">
+<h3>Opening an observation directory<a class="headerlink" href="#opening-an-observation-directory" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bpc</span><span class="o">.</span><span class="n">open_dir</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span> <span class="p">[</span><span class="n">filestype</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><em>dirname</em> is a string containing the path to the opening directory.</p>
+<p><em>filestype</em> is a string denoting the fileype of the files in the observation directory. Current available filetypes are:</p>
+<ul class="simple">
+<li><em>fits</em>: DW data format in a fits container</li>
+</ul>
+<p>Opening a directory will open all the data files inside the directory as DWData() objetcs and list them in the attiribute <em>dir_datasets</em>.</p>
+</div>
+</div>
+<div class="section" id="retrieving-data">
+<h2>Retrieving data<a class="headerlink" href="#retrieving-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="getting-the-median-of-one-or-multiple-datasets">
+<h3>Getting the median of one or multiple datasets<a class="headerlink" href="#getting-the-median-of-one-or-multiple-datasets" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bcp</span><span class="o">.</span><span class="n">get_median_data</span><span class="p">(</span><span class="n">ldataset</span><span class="p">,</span> <span class="n">section</span><span class="p">,</span> <span class="n">pol</span><span class="p">,</span> <span class="n">lrangei</span><span class="p">,</span> <span class="n">lranges</span><span class="p">,</span> <span class="n">lexcluded</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>ldatasets</em> is a N-list of indices of the wanted datasets</p>
+<p><em>section</em> is the index of the working section (from 0)</p>
+<p><em>pol</em> is the index of the working polarization (L=0, R=1, Q=2, U=3)</p>
+<p><em>lrangei</em> is a N-list of values of spatial sample to use at the begin for the median computation (for cross-scan and map observation types). A value equal to 0 means to use all available samples.</p>
+<p><em>lranges</em> is a N-list of values of spatial sample to use at the end for the median computation (for cross-scan and map observation types). A value equal to 0 means to use all available samples.</p>
+<p><em>lexcluded</em> is a N-list of values to exclute at the begin and at the end</p>
+<p>Returns a list of two np-arrays [x, y].</p>
+<p>This function has been designed to be used both to obtain the median of the time samples of a single file, and to obtain the median of several files concatenated.</p>
+<p>To build the median are needed, as well as section and polarization, three values for each file. They are provided by the lists <em>lrangei</em>, <em>lranges</em>, <em>lexcluded</em>.</p>
+<a class="reference internal image-reference" href="_images/regions.png"><img alt="_images/regions.png" class="align-center" src="_images/regions.png" style="width: 572.4px; height: 356.4px;" /></a>
+<p>The first two parameters set ranges of temporal samples at the begining and at the end of the subscan (green areas), and the third exclude a number of samples at the begining and at the end (red areas).</p>
+<p>For example if we set:</p>
+<ul class="simple">
+<li><em>irange</em> = 100</li>
+<li><em>srange</em> = 200</li>
+<li><em>excluded</em> = 3</li>
+</ul>
+<p>to compute the median we will use the first 100 and the last 200 samples, but excluding the fisrt and the last 3.
+So this parameters are useful only in the case of an OTF scan.</p>
+<p>After the median computation feed, section and polarization values are saved as current working dataset in the <em>dssel</em> attribute.</p>
+</div>
+<div class="section" id="getting-a-preflag">
+<h3>Getting a preflag<a class="headerlink" href="#getting-a-preflag" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bcp</span><span class="o">.</span><span class="n">get_flag_curve</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">section</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>file_name</em> is the path of the file in which there are the flag data
+<em>section</em> is the section in use</p>
+<p>Return a nparray of ones in which the flagged values are setted to zero.</p>
+<p>This function is useful if an RFI is present in every data file and therefore can not be eliminated by choosing the &#8220;clean&#8221; data.</p>
+<p>The result can be used as a weight for the fit funcion.</p>
+</div>
+<div class="section" id="getting-the-fit-of-datas">
+<h3>Getting the fit of datas<a class="headerlink" href="#getting-the-fit-of-datas" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bcp</span><span class="o">.</span><span class="n">get_fit</span><span class="p">(</span><span class="n">fit_type</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">order</span><span class="p">,</span> <span class="n">smooth</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">weight</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>fit_type</em> is the type of the fit computation. Aviable values are:</p>
+<ul class="simple">
+<li><em>spline</em></li>
+<li><em>chebyshev</em></li>
+</ul>
+<p><em>data</em> is a list of two nparray [x, y]</p>
+<p><em>order</em> is the order of the spline from 1 to 5 (default = 3, cubic spline)</p>
+<p><em>smooth</em> is a positive smoothing factor used to choose the number of knots. Number of knots will be increased until the smoothing condition is satisfied:</p>
+<div class="math">
+\[\sum_i(w(i)(y(i)-spl(x(i))))^2 \leq smooth\]</div>
+<p>where <em>y</em> are the data, <em>spl</em> the spline funcions and <em>w</em> the weights.</p>
+<p><em>degree</em> is the degree of the chebyshev fitting</p>
+<p><em>begin</em> is the begin of the range of the frequency samples in which the fit is computed.</p>
+<p><em>end</em> is the end of the range of the frequency samples in which the fit is computed.</p>
+<p>Returns a list of two nparrays [x,y]</p>
+<p>This function compute the fit of the <em>data</em> using the specified fit type.</p>
+<p>The <em>order</em> and <em>smooth</em> parameters are meaningful only if <em>fit_type</em> is &#8220;spline&#8221; and are ignored otherwise.
+<em>order</em> specifies the order of the spline functions and <em>smooth</em> determines how many nodes there are used (the bigger is <em>smooth</em>, the smaller is the number of the nodes).</p>
+<p>The <em>degree</em> parameter, instead, is used only if <em>fit_type</em> is &#8220;chebyshev&#8221; and set the degree of the chebyshev polynomials.</p>
+<p><em>begin</em> and <em>end</em> parameters determine the range (in frequency samples) in which the fit is computed.</p>
+<p><em>weight</em> is a optional nparray which is used as weights in the fit computation.</p>
+</div>
+</div>
+<div class="section" id="save-an-apply-data">
+<h2>Save an apply data<a class="headerlink" href="#save-an-apply-data" title="Permalink to this headline">¶</a></h2>
+<p>Functions to generate and update a correction file and to apply it to the observation files, generating tables of corrected data.</p>
+<div class="section" id="generate-and-update-the-correction-file">
+<h3>Generate and update the correction file<a class="headerlink" href="#generate-and-update-the-correction-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bcp</span><span class="o">.</span><span class="n">fitfile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">fit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>namefile</em> is the path of the new file</p>
+<p><em>fit</em> are the fit data</p>
+<p>This function create or, if exists, update the file containing the data of the correction curve and a list of the files of the observation.</p>
+<p>The correction curve is the fit curve normalized at peak and with value -1 (&#8220;diasabled&#8221;) on the samples outside the fit range.</p>
+</div>
+<div class="section" id="apply-the-correction-to-a-set-of-files">
+<h3>Apply the correction to a set of files<a class="headerlink" href="#apply-the-correction-to-a-set-of-files" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bcp</span><span class="o">.</span><span class="n">applycorr</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">filelist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>namefile</em> is the path of the correction file
+<em>filelist</em> is a list of path</p>
+<p>The function <em>applycorr</em> apply the corrections found in the file <em>file_name</em> to the raw data in each file of the observation, if filelist is not specified, or in the files given in the <em>filelist</em> parameter; and save the new data in a table named &#8220;CORR DATA TABLE&#8221;.</p>
+<p>The operation is a division of the raw data for the normalized fit curve, and where the latter is &#8220;disabled&#8221; (-1), it put the data to zero.</p>
+<p>This table is recognized by DW and can be used for the rfi flagging operations.</p>
+</div>
+</div>
+<div class="section" id="usage-example">
+<h2>Usage Example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<p>We will now describe an example of tipical usage.</p>
+<p>The first step is to instantiate the BPC class and to open the direcory:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dw.core.data_def</span> <span class="kn">as</span> <span class="nn">dw</span>
+<span class="n">bpc</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">DWObs</span><span class="p">()</span>
+<span class="n">bpc</span><span class="o">.</span><span class="n">open_dir</span><span class="p">(</span><span class="s2">&quot;YYYYMMDD-HHMMSS-Project-Suffix/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>we can now see the files and data in the attribute <em>dir_datasets</em>.
+For example, if we want the title of the files in the form &#8220;Scan#.Subscan#&#8221; we can write:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">bpc</span><span class="o">.</span><span class="n">dir_datasets</span><span class="p">:</span>
+        <span class="k">print</span> <span class="n">f</span><span class="o">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>To evalutate the median of a dataset we must import some plotting tools.
+For example for the median of the third file, feed 0, section 1, polarization R, and using all the time sample, we can do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">med</span> <span class="o">=</span> <span class="n">bpc</span><span class="o">.</span><span class="n">get_median_data</span><span class="p">([</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">med</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">med</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Evalutated the files to use (for example 2, 4, 5, 7), we can now generate a global median:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">gmed</span> <span class="o">=</span> <span class="n">bpc</span><span class="o">.</span><span class="n">get_median_data</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gmed</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gmed</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>and make the fit (for example, chebyshev of 90th degree, from the 100th to 1900th frequency sample):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fit</span> <span class="o">=</span> <span class="n">bcp</span><span class="o">.</span><span class="n">get_fit</span><span class="p">(</span><span class="s2">&quot;chebyshev&quot;</span><span class="p">,</span> <span class="n">gmed</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1900</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gmed</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gmed</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Optionally, if an RFI can not be eliminated by choosing the &#8220;clean&#8221; files, we can select a file preflagged by DW in order to not use the affected data and compute again the fit.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">flag</span> <span class="o">=</span> <span class="n">bcp</span><span class="o">.</span><span class="n">get_flag_curve</span><span class="p">(</span><span class="s2">&quot;flagged_file.fits&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">flag_fit</span> <span class="o">=</span> <span class="n">bcp</span><span class="o">.</span><span class="n">get_fit</span><span class="p">(</span><span class="s2">&quot;chebyshev&quot;</span><span class="p">,</span> <span class="n">gmed</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1900</span><span class="p">,</span> <span class="n">flag</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gmed</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">gmed</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fit</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">flag_fit</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">flag_fit</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now, if the fit is acceptable, we can save the data in a file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bpc</span><span class="o">.</span><span class="n">fitfile</span><span class="p">(</span><span class="s2">&quot;correction_filename.fits&quot;</span><span class="p">,</span> <span class="n">fit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or, if flagged</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bpc</span><span class="o">.</span><span class="n">fitfile</span><span class="p">(</span><span class="s2">&quot;correction_filename.fits&quot;</span><span class="p">,</span> <span class="n">flag_fit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will create the file, if it not exist, and fill the part of the table relative to the chosen dataset (feed 0, section 1 and polarization R, in this case).</p>
+<p>When the &#8220;correction&#8221; file is filled we can apply it to all the raw data with:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bpc</span><span class="o">.</span><span class="n">applycorr</span><span class="p">(</span><span class="s2">&quot;correction_filename.fits&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or to a list of files</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">bpc</span><span class="o">.</span><span class="n">applycorr</span><span class="p">(</span><span class="s2">&quot;correction_filename.fits&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">file1</span><span class="o">.</span><span class="n">fits</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">fileN</span><span class="o">.</span><span class="n">fits</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now, if we open any file of the observation directory with DW, we can find the new corrected datasets.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Text user&#8217;s interface</a><ul>
+<li><a class="reference internal" href="#peliminary-steps">Peliminary steps</a><ul>
+<li><a class="reference internal" href="#importing-the-module">Importing the module</a></li>
+<li><a class="reference internal" href="#instantiating-a-bpc-class">Instantiating a BPC class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#opening-data">Opening data</a><ul>
+<li><a class="reference internal" href="#opening-an-observation-directory">Opening an observation directory</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieving-data">Retrieving data</a><ul>
+<li><a class="reference internal" href="#getting-the-median-of-one-or-multiple-datasets">Getting the median of one or multiple datasets</a></li>
+<li><a class="reference internal" href="#getting-a-preflag">Getting a preflag</a></li>
+<li><a class="reference internal" href="#getting-the-fit-of-datas">Getting the fit of datas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#save-an-apply-data">Save an apply data</a><ul>
+<li><a class="reference internal" href="#generate-and-update-the-correction-file">Generate and update the correction file</a></li>
+<li><a class="reference internal" href="#apply-the-correction-to-a-set-of-files">Apply the correction to a set of files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-example">Usage Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="bpc.html"
+                        title="previous chapter">Band Pass Correction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="guibp.html"
+                        title="next chapter">Graphical user&#8217;s interface</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tuibp.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="guibp.html" title="Graphical user’s interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="bpc.html" title="Band Pass Correction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="bpc.html" >Band Pass Correction</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014-2015, IRA-INAF.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

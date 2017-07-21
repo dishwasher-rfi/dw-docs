@@ -1,0 +1,25 @@
+==================================
+Automatic RFI Detection Algorithms
+==================================
+
+Currently only one automatic algorithm for RFI detection is implemented.
+
+
+
+
+Simple Threshold Algorithm
+===========================
+
+Method: sigma-clipping.
+
+Parameters: number of r.m.s. above the median data value.
+
+The user defines the flagging threshold as a multiple of the data r.m.s. To help
+in this choice, the mean, median and r.m.s. for each data type (L, R, Q, U) are displayed.
+The user may chose to apply the flagging to one or more data types. In case more data
+types are to be flagged simultaneously, the proper threshold for each type is computed
+wit the related r.m.s.
+The algorithm identifies all the data above the threshold, creating a number of rectangular
+regions defining the flagged areas. These regions are displayed on the image and listed as
+a single item in the item list.
+

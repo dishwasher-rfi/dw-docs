@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Band Pass Correction &mdash; DW user  documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="DW user  documentation" href="index.html" />
+    <link rel="next" title="Text user’s interface" href="tuibp.html" />
+    <link rel="prev" title="RFI Algorithms" href="algorithms.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tuibp.html" title="Text user’s interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.html" title="RFI Algorithms"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="band-pass-correction">
+<h1>Band Pass Correction<a class="headerlink" href="#band-pass-correction" title="Permalink to this headline">¶</a></h1>
+<p>Within the DW package there is also a tool for the correction of the band pass, BPC.</p>
+<p>The basic idea behind this tool is to select only the data of an observation that do not contain sources or powerful rfi and then build a curve to correct the bandpass of the observation.</p>
+<p>This operation can be subdivided in steps:</p>
+<ul class="simple">
+<li>Select the usefull data evalutating the median (in the time domain) of every subscan</li>
+<li>Build the median curve of all the selected data</li>
+<li>Fit the median curve</li>
+<li>Normalize the fit at peak</li>
+<li>Divide the raw data for the normalized fit curve and create a new &#8220;corrected&#8221; data table</li>
+</ul>
+<p>After these operations there will be a new table in each subscan file with a &#8220;flattened&#8221; copy of the data, on which it will be much easier to work with algorithms for the rfi auto detection.</p>
+<p>An example of the raw data and the corrected data is shown below.</p>
+<a class="reference internal image-reference" href="_images/raw_corr.png"><img alt="_images/raw_corr.png" class="align-center" src="_images/raw_corr.png" style="width: 1534.5px; height: 790.2px;" /></a>
+<p>Because of the type of operations performed data will be deformed, so this tool is not intended for quantitative measurements but only to facilitate the flagging operations of the data.</p>
+<p>BPC provide, like DW, two type of interface:</p>
+<ul class="simple">
+<li>a <a class="reference internal" href="tuibp.html"><em>Text user&#8217;s interface</em></a></li>
+<li>a <a class="reference internal" href="guibp.html"><em>Graphical user&#8217;s interface</em></a></li>
+</ul>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tuibp.html">Text user&#8217;s interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tuibp.html#peliminary-steps">Peliminary steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuibp.html#opening-data">Opening data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuibp.html#retrieving-data">Retrieving data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuibp.html#save-an-apply-data">Save an apply data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tuibp.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guibp.html">Graphical user&#8217;s interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guibp.html#interface-elements">Interface elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guibp.html#usage-example">Usage example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="correction_file.html">Correction file</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="algorithms.html"
+                        title="previous chapter">RFI Algorithms</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tuibp.html"
+                        title="next chapter">Text user&#8217;s interface</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/bpc.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tuibp.html" title="Text user’s interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.html" title="RFI Algorithms"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014-2015, IRA-INAF.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

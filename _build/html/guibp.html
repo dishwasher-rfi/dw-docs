@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Graphical user’s interface &mdash; DW user  documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="DW user  documentation" href="index.html" />
+    <link rel="up" title="Band Pass Correction" href="bpc.html" />
+    <link rel="next" title="Correction file" href="correction_file.html" />
+    <link rel="prev" title="Text user’s interface" href="tuibp.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="correction_file.html" title="Correction file"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tuibp.html" title="Text user’s interface"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="bpc.html" accesskey="U">Band Pass Correction</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="graphical-user-s-interface">
+<h1>Graphical user&#8217;s interface<a class="headerlink" href="#graphical-user-s-interface" title="Permalink to this headline">¶</a></h1>
+<p>The graphical interface provides all the text functionalities and a graphical rappresentation of the datas.</p>
+<p>The gui can be launched with the command <em>bpcgui</em> or from the &#8220;tools&#8221; menù of DW.</p>
+<div class="section" id="interface-elements">
+<h2>Interface elements<a class="headerlink" href="#interface-elements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="menu">
+<h3>Menu<a class="headerlink" href="#menu" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="file-menu">
+<h4><em>File</em> menu<a class="headerlink" href="#file-menu" title="Permalink to this headline">¶</a></h4>
+<p><em>Open:</em> start the open directory dialog.</p>
+<p><em>Quit:</em> quit BP</p>
+</div>
+<div class="section" id="id1">
+<h4><em>?</em> menu<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p><em>About:</em> About and version</p>
+</div>
+</div>
+<div class="section" id="toolbar-buttons">
+<h3>Toolbar buttons<a class="headerlink" href="#toolbar-buttons" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><em>Open file:</em> start the open directory dialog.</li>
+<li><em>Selection:</em></li>
+<li><em>Rectangle zoom:</em> zoom on the selected area</li>
+<li><em>Parameters:</em> open a dialog to set some visualization parameter</li>
+<li><em>Grid:</em> open a dialog to set some grid visualization parameter</li>
+<li><em>Axis style:</em> open a dialog to set some axis visualization parameter</li>
+<li><em>Get preflag:</em> open a file preflaged by DW</li>
+<li><em>Fit:</em> open the fit window</li>
+<li><em>Apply:</em> apply the correction curve to all, or part of, the data files in the directory</li>
+</ul>
+</div>
+<div class="section" id="main-window">
+<h3>Main window<a class="headerlink" href="#main-window" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/screenshot.png"><img alt="_images/screenshot.png" class="align-center" src="_images/screenshot.png" style="width: 1229.4px; height: 691.2px;" /></a>
+<p>The main window, as we can see in the picture, is divided in five areas:</p>
+<div class="section" id="current">
+<h4>Current<a class="headerlink" href="#current" title="Permalink to this headline">¶</a></h4>
+<p>Is a information box with information about:</p>
+<ul class="simple">
+<li><em>feed</em></li>
+<li><em>section</em></li>
+<li><em>polarization</em></li>
+<li><em>frequency</em></li>
+<li><em>bandwidth</em></li>
+<li><em>file for the preflag</em></li>
+</ul>
+</div>
+<div class="section" id="dataset">
+<h4>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h4>
+<p>Is a selector for the working dataset:</p>
+<ul class="simple">
+<li><em>feed</em></li>
+<li><em>section</em></li>
+<li><em>polarization</em></li>
+</ul>
+<p>The <em>apply</em> button set the selected dataset. It will set the <em>dssel</em> parameter that we saw in the <a class="reference internal" href="tuibp.html"><em>Text user&#8217;s interface</em></a>.</p>
+</div>
+<div class="section" id="list">
+<h4>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h4>
+<p>Is a list of the files in the observation directory with checkbox.</p>
+<p>Here we can select which file we are working with and which files use to make the correction curve.</p>
+</div>
+<div class="section" id="selection">
+<h4>Selection<a class="headerlink" href="#selection" title="Permalink to this headline">¶</a></h4>
+<p>The selection box is divided in two subboxes:</p>
+<ul class="simple">
+<li><em>Range settings</em></li>
+<li><em>Fit range</em></li>
+</ul>
+<p>The <em>range setting</em> can be used to set the type of observation and to set a range of spatial samples to be used for the median computation:</p>
+<ul class="simple">
+<li><em>type of datas:</em> the type of observation. Values are: &#8220;On/Off&#8221;, &#8220;Cross Scan&#8221; and &#8220;Map&#8221;</li>
+<li><em>select region inf:</em> set a number of spatial samples at the beginning of the data to be used for the median computation. A value equal to 0 means to use all available samples.</li>
+<li><em>select region sup:</em> set a number of samples at the end of the data to be used for the median computation. A value equal to 0 means to use all available samples.</li>
+<li><em>excluded region:</em> set a number of samples at the beginning and at the end of the data to be excluded from the computation (useful for ramps)</li>
+</ul>
+<p>The <em>select region inf</em> and <em>select region sup</em> are active only if <em>type of datas</em> is &#8220;Cross scan&#8221; or &#8220;Map&#8221;.</p>
+<p>The <em>fit range</em> is needed to set a range for the computation of the fit.
+The fit is computated in the region from <em>select fit region inf</em> and <em>select fit region sup</em>.</p>
+<p>The <em>apply</em> button save these settings and update the plot.</p>
+</div>
+<div class="section" id="plot-area">
+<h4>Plot area<a class="headerlink" href="#plot-area" title="Permalink to this headline">¶</a></h4>
+<p>Is the area for the visualization of the medians plot (blue) and medians &#8220;cutted&#8221; by the preflagging, if applied (green).</p>
+<a class="reference internal image-reference" href="_images/screenshot_preflag.png"><img alt="_images/screenshot_preflag.png" class="align-center" src="_images/screenshot_preflag.png" style="width: 1220.4px; height: 234.9px;" /></a>
+</div>
+</div>
+<div class="section" id="fit-window">
+<h3>Fit Window<a class="headerlink" href="#fit-window" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="_images/screenshot_fit.png"><img alt="_images/screenshot_fit.png" class="align-center" src="_images/screenshot_fit.png" style="width: 1229.4px; height: 691.2px;" /></a>
+<p>In the toolbar there are the folowing buttons:</p>
+<ul class="simple">
+<li><em>Selection:</em></li>
+<li><em>Rectangle zoom:</em> zoom on the selected area</li>
+<li><em>Parameters:</em> open a dialog to set some visualization parameter</li>
+<li><em>Grid:</em> open a dialog to set some grid visualization parameter</li>
+<li><em>Axis style:</em> open a dialog to set some axis visualization parameter</li>
+<li><em>Save fit:</em> save the current fit to the file &#8220;fit_data_correction.fits&#8221; in the root of the observation direcory.</li>
+</ul>
+<p>The fit window is divided in two areas:</p>
+<ul class="simple">
+<li><em>fit settings</em></li>
+<li><em>view area</em></li>
+</ul>
+<div class="section" id="fit-settings">
+<h4>Fit settings<a class="headerlink" href="#fit-settings" title="Permalink to this headline">¶</a></h4>
+<p>the fit settings are:</p>
+<p><em>Fit type</em> is a selector of the type of the fit. Current supported methods are:
+* <em>Spline</em>
+* <em>Chebyshev</em></p>
+<p><em>Spline degree</em> and <em>Spline smooth</em> are free parameters for the spline method. The meaning of these parameters is explained in the <a class="reference internal" href="tuibp.html"><em>Text user&#8217;s interface</em></a> section.</p>
+<p><em>Chebyshev degree</em> is the degree of the Chebyshev polynomes.</p>
+<p>The button <em>apply</em> starts the computation and visualizes the result in the plot area.</p>
+</div>
+<div class="section" id="id2">
+<h4>Plot area<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Is the area for the visualization of the datas (blue) and of the fit (red).</p>
+</div>
+</div>
+</div>
+<div class="section" id="usage-example">
+<h2>Usage example<a class="headerlink" href="#usage-example" title="Permalink to this headline">¶</a></h2>
+<p>The operations to build the the correction file and to apply it to the raw data are the same of the text user interface case.</p>
+<p>Opened the directory of the observation, we can browse between the files using the list widget and between feeds, sections and polarizations using the dataset box.</p>
+<p>In the case of OTF (&#8220;Cross scan&#8221; or &#8220;Map&#8221;) data we have to set ranges of spatial samples to use, as explained in <a class="reference internal" href="tuibp.html"><em>Text user&#8217;s interface</em></a>.</p>
+<p>We can then select, thanks to the checkboxes on the list widget, only the files whose median does not present excessive irregularities.</p>
+<p>Opening the fit window from the button in the toolbar, will show the median of all the selected files concatenated.</p>
+<p>We can now try to run some tests of fit and save the result when we are satisfied, by means of the button in the toolbar.
+The data will be saved in the file &#8220;fit_data_correction.fits&#8221;</p>
+<p>Closed the fit window, and performed the same operation on the other, or all, of the feed/section/polarization combinations, we can apply the correction to all the observation files.</p>
+<p>Now, if we open any file of the observation directory with DW, we can find the new corrected datasets.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Graphical user&#8217;s interface</a><ul>
+<li><a class="reference internal" href="#interface-elements">Interface elements</a><ul>
+<li><a class="reference internal" href="#menu">Menu</a><ul>
+<li><a class="reference internal" href="#file-menu"><em>File</em> menu</a></li>
+<li><a class="reference internal" href="#id1"><em>?</em> menu</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#toolbar-buttons">Toolbar buttons</a></li>
+<li><a class="reference internal" href="#main-window">Main window</a><ul>
+<li><a class="reference internal" href="#current">Current</a></li>
+<li><a class="reference internal" href="#dataset">Dataset</a></li>
+<li><a class="reference internal" href="#list">List</a></li>
+<li><a class="reference internal" href="#selection">Selection</a></li>
+<li><a class="reference internal" href="#plot-area">Plot area</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fit-window">Fit Window</a><ul>
+<li><a class="reference internal" href="#fit-settings">Fit settings</a></li>
+<li><a class="reference internal" href="#id2">Plot area</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage-example">Usage example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tuibp.html"
+                        title="previous chapter">Text user&#8217;s interface</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="correction_file.html"
+                        title="next chapter">Correction file</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/guibp.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="correction_file.html" title="Correction file"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tuibp.html" title="Text user’s interface"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="bpc.html" >Band Pass Correction</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014-2015, IRA-INAF.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

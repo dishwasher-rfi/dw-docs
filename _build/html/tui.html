@@ -1,0 +1,472 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Text user’s interface &mdash; DW user  documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="DW user  documentation" href="index.html" />
+    <link rel="up" title="User’s interfaces" href="ui.html" />
+    <link rel="next" title="Graphical user’s interface" href="gui.html" />
+    <link rel="prev" title="User’s interfaces" href="ui.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gui.html" title="Graphical user’s interface"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ui.html" title="User’s interfaces"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ui.html" accesskey="U">User&#8217;s interfaces</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="text-user-s-interface">
+<h1>Text user&#8217;s interface<a class="headerlink" href="#text-user-s-interface" title="Permalink to this headline">¶</a></h1>
+<p>The text user&#8217;s interface to DW can be used with any interactive python interpreter.</p>
+<p>The following preliminary steps are required to start working with DW in text mode.</p>
+<div class="section" id="preliminary-steps">
+<h2>Preliminary steps<a class="headerlink" href="#preliminary-steps" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="importing-the-module">
+<h3>Importing the module<a class="headerlink" href="#importing-the-module" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dw.core.data_def</span> <span class="kn">as</span> <span class="nn">dw</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instatiating-a-dw-class">
+<h3>Instatiating a DW class<a class="headerlink" href="#instatiating-a-dw-class" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span> <span class="o">=</span> <span class="n">dw</span><span class="o">.</span><span class="n">DWData</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="opening-and-closing-data">
+<h2>Opening and closing data<a class="headerlink" href="#opening-and-closing-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="opening-a-data-file">
+<h3>Opening a data file<a class="headerlink" href="#opening-a-data-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">open_data</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">[</span><span class="n">filetype</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><em>filename</em> is a string containing the path to the opening file.
+<em>filetype</em> is a string denoting the fileype. Current available filetypes are:</p>
+<ul class="simple">
+<li><em>fits</em>: SRT Nuraghe FITS data format</li>
+<li><em>hdf</em>: DW data format in a HDF5 container</li>
+<li><em>hdf_pola</em>: DW polarimeter format in a HDF5 container (experimental)</li>
+</ul>
+</div>
+<div class="section" id="closing-a-data-file">
+<h3>Closing a data file<a class="headerlink" href="#closing-a-data-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="retrieving-data-and-metadata">
+<h2>Retrieving data and metadata<a class="headerlink" href="#retrieving-data-and-metadata" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-a-data-table">
+<h3>Read a data table<a class="headerlink" href="#read-a-data-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">dataset2np_array</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>m</em> is an array of 2D numpy arrays which are the data of L and R polarizations</p>
+</div>
+<div class="section" id="read-a-polarimeter-data-table">
+<h3>Read a polarimeter data table<a class="headerlink" href="#read-a-polarimeter-data-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">polaset2np_array</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>m</em> is an array of 2D numpy arrays which are the data of the stokes parameters (L, R, Q, U, I, V, Phi, P)</p>
+</div>
+<div class="section" id="retrieve-data-time-scale">
+<h3>Retrieve data time scale<a class="headerlink" href="#retrieve-data-time-scale" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_time_scale</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>t</em> is a 1D numpy array containing the time values of the selected dataset samples</p>
+</div>
+<div class="section" id="retrieve-data-time-scale-in-ut-format">
+<h3>Retrieve data time scale in UT format<a class="headerlink" href="#retrieve-data-time-scale-in-ut-format" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_ut</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>t</em> is a 1D numpy array containing the time values in UT format of the selected dataset samples</p>
+</div>
+<div class="section" id="retrieve-data-frequencies-scale">
+<h3>Retrieve data frequencies scale<a class="headerlink" href="#retrieve-data-frequencies-scale" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_freq_scale</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>f</em> is a 1D numpy array containing the frequency values of the selected dataset samples</p>
+</div>
+<div class="section" id="retrieve-data-bandwidth">
+<h3>Retrieve data bandwidth<a class="headerlink" href="#retrieve-data-bandwidth" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_bandwidth</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>b</em> is the dataset bandwidth</p>
+</div>
+<div class="section" id="retrieve-data-ascension">
+<h3>Retrieve data ascension<a class="headerlink" href="#retrieve-data-ascension" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_ascension</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>a</em> is a 1D numpy array containing the &#8216;per sample&#8217; dataset right ascension</p>
+</div>
+<div class="section" id="retrieve-data-azimuth">
+<h3>Retrieve data azimuth<a class="headerlink" href="#retrieve-data-azimuth" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_azimuth</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>a</em> is a 1D numpy array containing the &#8216;per sample&#8217; dataset azimuth</p>
+</div>
+<div class="section" id="retrieve-data-declination">
+<h3>Retrieve data declination<a class="headerlink" href="#retrieve-data-declination" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_declination</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>d</em> is a 1D numpy array containing the &#8216;per sample&#8217; dataset declination</p>
+</div>
+<div class="section" id="retrieve-data-elevation">
+<h3>Retrieve data elevation<a class="headerlink" href="#retrieve-data-elevation" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_elevation</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>e</em> is a 1D numpy array containing the &#8216;per sample&#8217; dataset elevation</p>
+</div>
+<div class="section" id="retrieve-pointed-source-name">
+<h3>Retrieve pointed source name<a class="headerlink" href="#retrieve-pointed-source-name" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_source</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>s</em> is a 1D numpy array containing the &#8216;per sample&#8217; pointed source name</p>
+</div>
+<div class="section" id="retrieve-the-on-track-flag">
+<h3>Retrieve the &#8216;on track&#8217; flag<a class="headerlink" href="#retrieve-the-on-track-flag" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_on_track</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>t</em> is a 1D numpy array containing the &#8216;per sample&#8217; flag stating whether the source is on track (1 = pointing error &lt; 0.1*HPBW) or not (0 = pointing error &gt; 0.1*HPBW)</p>
+</div>
+</div>
+<div class="section" id="correcting-data">
+<h2>Correcting data<a class="headerlink" href="#correcting-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="open-a-correction-file">
+<h3>Open a correction file<a class="headerlink" href="#open-a-correction-file" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">open_correction</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>file_name</em> is a correction file generated by BPC (see <a class="reference internal" href="bpc.html"><em>Band Pass Correction</em></a>)</p>
+</div>
+<div class="section" id="toggle-corrections-on-data">
+<h3>Toggle corrections on data<a class="headerlink" href="#toggle-corrections-on-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">toggle_correction</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will switch the correction on (or off) while reading data from datasets.
+To check if the correction is active see the boolean value of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">correction</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="flagging-data">
+<h2>Flagging data<a class="headerlink" href="#flagging-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-flagging-set-by-rectangular-area-list">
+<h3>Create a new flagging set by rectangular area list<a class="headerlink" href="#create-a-new-flagging-set-by-rectangular-area-list" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">new_flagset</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">flag_areas</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>flag_areas</em> is a list of areas to set as flagged (ymin, ymax, xmin, xmax)</p>
+</div>
+<div class="section" id="create-a-new-flagging-set-from-a-list-of-arrays">
+<h3>Create a new flagging set from a list of arrays<a class="headerlink" href="#create-a-new-flagging-set-from-a-list-of-arrays" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">array_flagset</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">flag_arrays</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>flag_arrays</em> is a list of numpy arrays (same shape as data) representing the flagging sets</p>
+</div>
+<div class="section" id="retrieve-the-list-of-the-flagging-sets-belonging-to-the-selected-dataset">
+<h3>Retrieve the list of the flagging sets belonging to the selected dataset<a class="headerlink" href="#retrieve-the-list-of-the-flagging-sets-belonging-to-the-selected-dataset" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">get_flagsets</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+</div>
+<div class="section" id="read-flag-data-table">
+<h3>Read flag data table<a class="headerlink" href="#read-flag-data-table" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">flagset2np_array</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">k_flagset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset
+<em>k_flagset</em> is the key of the flagset in the flagsets dictionary</p>
+<p><em>f</em> is a 2D numpy array of the dimensions of the data which rappresent the matrix of the <em>k_flagset</em> of the <em>i_dataset</em> dataset</p>
+<p>To obtain a dictionary of all the flasgsets of a given dataset</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">flagsets2np_array</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="merge-flagging-sets">
+<h3>Merge flagging sets<a class="headerlink" href="#merge-flagging-sets" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">merge_flagsets</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">k_flagsets</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>k_flagsets</em> is a list of keys of flagsets to merge</p>
+</div>
+<div class="section" id="delete-flagging-sets">
+<h3>Delete flagging sets<a class="headerlink" href="#delete-flagging-sets" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span>dwc.del_flagset(i_dataset, k_flagset):
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>k_flagset</em> is the key of the flagset in the flagsets dictionary</p>
+</div>
+<div class="section" id="delete-flagging-sets-intersecating-a-rectangular-area">
+<h3>Delete flagging sets intersecating a rectangular area<a class="headerlink" href="#delete-flagging-sets-intersecating-a-rectangular-area" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">del_sel_flag</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">rect_area</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>rect_area</em> is a tuple rappresenting a rectangular area: (y_min, y_max, x_min, x_max)</p>
+<p>Every flag area intersected by <em>rect_area</em> will be removed</p>
+</div>
+<div class="section" id="retrieve-metadata-related-to-the-selected-flagging-set">
+<h3>Retrieve metadata related to the selected flagging set<a class="headerlink" href="#retrieve-metadata-related-to-the-selected-flagging-set" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">md</span> <span class="o">=</span> <span class="n">dwc</span><span class="o">.</span><span class="n">get_flagset_meta</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">k_flagset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>k_flagset</em> is the key of the flagset in the flagsets dictionary</p>
+<p><em>md</em> is a dictionary containing the metadata</p>
+</div>
+<div class="section" id="copy-the-flag-table-to-others-files">
+<h3>Copy the flag table to others files<a class="headerlink" href="#copy-the-flag-table-to-others-files" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">propag_flagtable</span><span class="p">(</span><span class="n">filelist</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>filelist</em> is a list of file paths where the entries of the current flag table will be copied</p>
+</div>
+</div>
+<div class="section" id="automatic-flagging">
+<h2>Automatic flagging<a class="headerlink" href="#automatic-flagging" title="Permalink to this headline">¶</a></h2>
+<p>Automatic flagging requires a minimum of two steps to be performed:</p>
+<ul class="simple">
+<li>flagging algorithm selection and initialization</li>
+<li>flagging computation</li>
+</ul>
+<p>Optionally the user can:</p>
+<ul class="simple">
+<li>select algorithm&#8217;s parameters</li>
+<li>select the algorithm&#8217;s output (among the algorithm&#8217;s available selection)</li>
+</ul>
+<div class="section" id="algorithm-selection-and-initialization">
+<h3>Algorithm selection and initialization<a class="headerlink" href="#algorithm-selection-and-initialization" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">auto_flag_init</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">alg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>i_dataset</em> is the index of the corrensponding dataset</p>
+<p><em>alg</em> is the RFI detection algorithm class.</p>
+<p>The available algorthms can be listed using</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">get_rfi_dect_algorithms</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This method returns a dictionary whose keys are the RFI detection algorithm classes. The dictionary contains the name, a short description and a dictionary with the default paremeter&#8217;s values.</p>
+</div>
+<div class="section" id="run-the-calculation">
+<h3>Run the calculation<a class="headerlink" href="#run-the-calculation" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">auto_flag_compute</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Flagging matrices are written in the data structure.</p>
+</div>
+<div class="section" id="selecting-algorithm-s-parameters">
+<h3>Selecting algorithm&#8217;s parameters<a class="headerlink" href="#selecting-algorithm-s-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Non default parameters can be selected either by passing a proper dictionary at the initialization</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">auto_flag_init</span><span class="p">(</span><span class="n">i_dataset</span><span class="p">,</span> <span class="n">alg</span><span class="p">,</span> <span class="o">**</span><span class="n">param_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or by calling</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">auto_flag_upd_params</span><span class="p">(</span><span class="o">**</span><span class="n">param_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Available parameters are algorithm dependent.
+Since currently implemented algorithm are for test purpouse, more detailed information about the algorithm&#8217;s parameters can be found in the developer&#8217;s documentation.</p>
+</div>
+<div class="section" id="selectiong-algorithm-s-output">
+<h3>Selectiong algorithm&#8217;s output<a class="headerlink" href="#selectiong-algorithm-s-output" title="Permalink to this headline">¶</a></h3>
+<p>Each RFI detection algorithm can return more than one flagging matrix.</p>
+<p>Available output matrices can be checked without</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">auto_flag_get_out</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The method returns a tuple containing a list with the available option and a dictionary with the current selection.</p>
+<p>Output matrices can be selected when invoking the algorithm&#8217;s computation</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dwc</span><span class="o">.</span><span class="n">auto_flag_compute</span><span class="p">(</span><span class="n">out_list</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><em>out_list</em> is a list of labels name for the selected output matrices</p>
+<p>Since currently implemented algorithm are for test purpouse, more detailed information about the output matrices can be found in the developer&#8217;s documentation.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Text user&#8217;s interface</a><ul>
+<li><a class="reference internal" href="#preliminary-steps">Preliminary steps</a><ul>
+<li><a class="reference internal" href="#importing-the-module">Importing the module</a></li>
+<li><a class="reference internal" href="#instatiating-a-dw-class">Instatiating a DW class</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#opening-and-closing-data">Opening and closing data</a><ul>
+<li><a class="reference internal" href="#opening-a-data-file">Opening a data file</a></li>
+<li><a class="reference internal" href="#closing-a-data-file">Closing a data file</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#retrieving-data-and-metadata">Retrieving data and metadata</a><ul>
+<li><a class="reference internal" href="#read-a-data-table">Read a data table</a></li>
+<li><a class="reference internal" href="#read-a-polarimeter-data-table">Read a polarimeter data table</a></li>
+<li><a class="reference internal" href="#retrieve-data-time-scale">Retrieve data time scale</a></li>
+<li><a class="reference internal" href="#retrieve-data-time-scale-in-ut-format">Retrieve data time scale in UT format</a></li>
+<li><a class="reference internal" href="#retrieve-data-frequencies-scale">Retrieve data frequencies scale</a></li>
+<li><a class="reference internal" href="#retrieve-data-bandwidth">Retrieve data bandwidth</a></li>
+<li><a class="reference internal" href="#retrieve-data-ascension">Retrieve data ascension</a></li>
+<li><a class="reference internal" href="#retrieve-data-azimuth">Retrieve data azimuth</a></li>
+<li><a class="reference internal" href="#retrieve-data-declination">Retrieve data declination</a></li>
+<li><a class="reference internal" href="#retrieve-data-elevation">Retrieve data elevation</a></li>
+<li><a class="reference internal" href="#retrieve-pointed-source-name">Retrieve pointed source name</a></li>
+<li><a class="reference internal" href="#retrieve-the-on-track-flag">Retrieve the &#8216;on track&#8217; flag</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#correcting-data">Correcting data</a><ul>
+<li><a class="reference internal" href="#open-a-correction-file">Open a correction file</a></li>
+<li><a class="reference internal" href="#toggle-corrections-on-data">Toggle corrections on data</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flagging-data">Flagging data</a><ul>
+<li><a class="reference internal" href="#create-a-new-flagging-set-by-rectangular-area-list">Create a new flagging set by rectangular area list</a></li>
+<li><a class="reference internal" href="#create-a-new-flagging-set-from-a-list-of-arrays">Create a new flagging set from a list of arrays</a></li>
+<li><a class="reference internal" href="#retrieve-the-list-of-the-flagging-sets-belonging-to-the-selected-dataset">Retrieve the list of the flagging sets belonging to the selected dataset</a></li>
+<li><a class="reference internal" href="#read-flag-data-table">Read flag data table</a></li>
+<li><a class="reference internal" href="#merge-flagging-sets">Merge flagging sets</a></li>
+<li><a class="reference internal" href="#delete-flagging-sets">Delete flagging sets</a></li>
+<li><a class="reference internal" href="#delete-flagging-sets-intersecating-a-rectangular-area">Delete flagging sets intersecating a rectangular area</a></li>
+<li><a class="reference internal" href="#retrieve-metadata-related-to-the-selected-flagging-set">Retrieve metadata related to the selected flagging set</a></li>
+<li><a class="reference internal" href="#copy-the-flag-table-to-others-files">Copy the flag table to others files</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#automatic-flagging">Automatic flagging</a><ul>
+<li><a class="reference internal" href="#algorithm-selection-and-initialization">Algorithm selection and initialization</a></li>
+<li><a class="reference internal" href="#run-the-calculation">Run the calculation</a></li>
+<li><a class="reference internal" href="#selecting-algorithm-s-parameters">Selecting algorithm&#8217;s parameters</a></li>
+<li><a class="reference internal" href="#selectiong-algorithm-s-output">Selectiong algorithm&#8217;s output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ui.html"
+                        title="previous chapter">User&#8217;s interfaces</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gui.html"
+                        title="next chapter">Graphical user&#8217;s interface</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tui.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gui.html" title="Graphical user’s interface"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ui.html" title="User’s interfaces"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DW user  documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="ui.html" >User&#8217;s interfaces</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2014-2015, IRA-INAF.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
