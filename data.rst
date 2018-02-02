@@ -20,6 +20,3 @@ hdf5
 DW does not have a complete support for the *hdf5*.
 
 It was implemented in the fists stages of the developement for testing purpouses for the *roach board* custom output. In the future, if a standard will be defined, the support will be completed.
-
-
-
