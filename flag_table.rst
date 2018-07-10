@@ -4,13 +4,13 @@ Flag table
 
 The first time that a flagging region is saved, DW creates a new table extension that is
 appended to the data: the so-called *flag table*.
-Each row in the flagging table contains the parameters needed to define a flagged
-area.
-If an automatic flagging method creates more than one flagged region, the regions are grouped in a
-single item in the item list (one item for data type, i.e. L, R, Q, U) but they are eventually
-saved as separate rows in teh flag table.
+Each row in the flag table contains the parameters needed to define a flagged
+region.
+If an automatic flagging method creates more than one flagged region, all the regions are grouped in
+a single item in the item list (one item for data type, i.e. L, R, Q, U) but they are eventually
+saved as separate rows in the flag table.
 
-The flag table is updated each time further flagged regions are saved.
+The flag table is updated each time new flagged regions are saved.
 
 Each entry in the flag table has the folowing elements:
 
@@ -25,7 +25,6 @@ Each entry in the flag table has the folowing elements:
 * *section:* The spectral section number to which the flagged area refers.
 * *pola:* The polarization (L, R, Q or U) to which the flagged area refers.
 
-If an algorithm produce irregulars shapes, they are divided in rectangles and saved wiht the 
-same *nop* number. This allow the association of all the regions belonging to the same 
-flagged area, needed for instance if one wants to subsequently delete that area. 
+If an algorithm produce a flagged region with irregular shape, the region is divided in a number of rectangles that are saved wiht the 
+same *nop* number. This allows the subsequent deletion of the entire flagged region, if needed.
 DW reconstruct a flagging matrix from the *flag_data* values of a given *nop*.
