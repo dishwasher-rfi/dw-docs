@@ -1,12 +1,11 @@
 ===========
 Description
 ===========
-**Dish Washer** (DW) is a software for RFI (Radio Frequency Interference) detection and mitigation on signals collected by single dish radiotelescopes.
+**Dish Washer** (DW) is a python package providing tools for the detection and flagging of Radio Frequency Interference (RFI) in data collected by single dish radiotelescopes.
 
 It is developed at the `Institute for Radioastronomy - National Institute for Astrophysics (IRA-INAF), Bologna, Italy`_
 
-DW is a python package providing tools for detection and flagging of RFI 
-on data collected from single dish radiotelescopes. It provides GUI and command 
+DW provides a Graphical User Interface (GUI) and command 
 line interface through an interactive python console (i.e. iPython).
 Currently, together with DW, is shipped *libdw*, a C library aimed to provide
 efficient implementation of RFI detection algorithms. The library is installed 
