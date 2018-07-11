@@ -35,7 +35,7 @@ Opening a data file
 *filename* is a string containing the path to the opening file.
 *filetype* is a string denoting the fileype. Current available filetypes are:
 
-* *fits*: SRT Nuraghe FITS data format
+* *fits*: single dish FITS data format in use at the Italian radio telescopes
 * *hdf*: DW data format in a HDF5 container
 * *hdf_pola*: DW polarimeter format in a HDF5 container (experimental)
 
